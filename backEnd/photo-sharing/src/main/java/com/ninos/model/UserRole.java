@@ -7,13 +7,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class UserRole {
+public class UserRole implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,5 +30,8 @@ public class UserRole {
     private Role role;
 
 
-
+    public UserRole(AppUser appUser, Role role) {
+        this.appUser = appUser;
+        this.role = role;
+    }
 }

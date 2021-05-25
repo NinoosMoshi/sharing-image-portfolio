@@ -4,6 +4,7 @@ import com.ninos.model.AppUser;
 import com.ninos.model.Role;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,19 +24,19 @@ public interface AccountService {
 
     public void updateUserPassword(AppUser appUser, String newpassword);
 
-    public AppUser updateUser(AppUser user, HashMap<String, String> request);
+    public AppUser updateUser(AppUser appUser, HashMap<String,String> request);
 
-    public AppUser simpleSaveUser(AppUser user);
+    public AppUser simpleSaveUser(AppUser appUser);
 
     public AppUser findUserById(Long id);
 
     public void deleteUser(AppUser appUser);
 
-    public void resetPassword(AppUser user);
+    public void resetPassword(AppUser appUser);
 
     public List<AppUser> getUsersListByUsername(String username);
 
-    public String saveUserImage(MultipartFile multipartFile, Long userImageId);
+    public String saveUserImage(HttpServletRequest request, Long userImageId);
 
 
 

@@ -9,6 +9,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -19,13 +20,14 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class AppUser {
+public class AppUser implements Serializable {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
+
     private String name;
 
     @Column(unique = true, nullable = false)
@@ -53,4 +55,13 @@ public class AppUser {
     private Set<UserRole> userRoles = new HashSet<>();
 
 
+
+    public void setPost(Post post) {
+        this.post.add(post);
+    }
+
+
+    public void setLikedPost(Post likedPost) {
+        this.likedPost.add(likedPost);
+    }
 }

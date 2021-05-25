@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Post {
+public class Post implements Serializable {
 
 
 
@@ -29,6 +30,7 @@ public class Post {
     @Column(columnDefinition = "text")
     private String caption;
 
+    private String username;
     private String location;
     private int likes;
     private Long userImageId;
@@ -43,4 +45,7 @@ public class Post {
     private List<Comment> commentList;
 
 
+    public void setCommentList(Comment commentList) {
+        this.commentList.add(commentList);
+    }
 }
