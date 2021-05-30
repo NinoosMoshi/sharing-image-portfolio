@@ -71,13 +71,15 @@ public class PostServiceImpl implements PostService {
         }
     }
 
+
     @Override
-    public String savePostImage(HttpServletRequest request, String fileName) {
+    public String savePostImage(MultipartFile multipartFile, String fileName) {
 
-          MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-          Iterator<String> it = multipartRequest.getFileNames();
-          MultipartFile multipartFile = multipartRequest.getFile(it.next());
-
+        /*
+         * MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)
+         * request; Iterator<String> it = multipartRequest.getFileNames(); MultipartFile
+         * multipartFile = multipartRequest.getFile(it.next());
+         */
 
         try {
             byte[] bytes = multipartFile.getBytes();
@@ -90,6 +92,8 @@ public class PostServiceImpl implements PostService {
         System.out.println("Photo saved successfully!");
         return "Photo saved successfully!";
     }
+
+
     }
 
 

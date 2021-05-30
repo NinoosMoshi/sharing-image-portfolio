@@ -20,6 +20,6 @@ public interface PostService {
 
     public Post deletePost(Post post);
 
-    public String savePostImage(HttpServletRequest request, String fileName);
+    public String savePostImage(MultipartFile multipartFile, String fileName);
 
 }

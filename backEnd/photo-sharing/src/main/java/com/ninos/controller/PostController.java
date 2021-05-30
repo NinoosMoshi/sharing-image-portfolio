@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -165,9 +166,9 @@ public class PostController {
 
 
     @PostMapping("/photo/upload")
-    public ResponseEntity<String> fileUpload(@RequestParam("image") HttpServletRequest request) {
+    public ResponseEntity<String> fileUpload(@RequestParam("image") MultipartFile multipartFile) {
         try {
-            postService.savePostImage(request, postImageName);
+            postService.savePostImage(multipartFile, postImageName);
             return new ResponseEntity<>("Picture Saved!", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Picture was saved", HttpStatus.BAD_REQUEST);

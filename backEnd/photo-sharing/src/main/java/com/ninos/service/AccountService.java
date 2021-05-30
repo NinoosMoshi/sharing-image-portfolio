@@ -36,7 +36,7 @@ public interface AccountService {
 
     public List<AppUser> getUsersListByUsername(String username);
 
-    public String saveUserImage(HttpServletRequest request, Long userImageId);
+    public String saveUserImage(MultipartFile multipartFile, Long userImageId);
 
 
 

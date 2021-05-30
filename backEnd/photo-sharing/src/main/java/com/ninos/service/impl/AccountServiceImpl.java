@@ -154,12 +154,12 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public String saveUserImage(HttpServletRequest request, Long userImageId) {
-
-          MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-          Iterator<String> it = multipartRequest.getFileNames();
-          MultipartFile multipartFile = multipartRequest.getFile(it.next());
-
+    public String saveUserImage(MultipartFile multipartFile, Long userImageId) {
+        /*
+         * MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)
+         * request; Iterator<String> it = multipartRequest.getFileNames(); MultipartFile
+         * multipartFile = multipartRequest.getFile(it.next());
+         */
         byte[] bytes;
         try {
             Files.deleteIfExists(Paths.get(Constants.USER_FOLDER + "/" + userImageId + ".png"));
